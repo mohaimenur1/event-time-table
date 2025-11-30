@@ -8,12 +8,11 @@ export default function VenuBar() {
   const [venueData, setVenueData] = React.useState(Venus);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    // setValue(newValue);
     console.log("click value", newValue);
   };
 
   return (
-    <Box sx={{ bgcolor: "background.paper", height: "480px", width: "820px" }}>
+    <Box sx={{ bgcolor: "background.paper", width: "820px" }}>
       <Tabs
         value={venueData}
         onChange={handleChange}

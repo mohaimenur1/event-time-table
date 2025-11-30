@@ -47,3 +47,45 @@ export const Venus = [
   "Venue6",
   "Venue7",
 ];
+
+export const events = [
+  {
+    id: "ev1",
+    title: "Team Standup",
+    day: days[0].day,
+    date: days[0].date,
+    venue: "Venue1",
+    startTime: "9:00",
+    endTime: "9:30",
+    color: "#4caf50",
+  },
+  {
+    id: "ev2",
+    title: "Next.js Workshop",
+    day: days[1].day,
+    date: days[1].date,
+    venue: "Venue3",
+    startTime: "10:00",
+    endTime: "11:00",
+    color: "#2196f3",
+  },
+  {
+    id: "ev3",
+    title: "Client Review",
+    day: days[2].day,
+    date: days[2].date,
+    venue: "Venue5",
+    startTime: "11:30",
+    endTime: "12:00",
+    color: "#ff5722",
+  },
+  {
+    id: "ev4",
+    title: "Marketing Sync",
+    day: "Friday",
+    venue: "Venue2",
+    startTime: "9:15",
+    endTime: "10:15",
+    color: "#ff9800",
+  },
+];

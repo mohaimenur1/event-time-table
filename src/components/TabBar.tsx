@@ -1,41 +1,30 @@
-import * as React from "react";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Box from "@mui/material/Box";
+import { useState } from "react";
 import { days } from "../db";
+import { Box, Tab, Tabs } from "@mui/material";
 
-export default function TabBar() {
-  const [weekName, setWeekName] = React.useState(days);
+export default function TabBar({
+  onSelectDay,
+}: {
+  onSelectDay: (d: string) => void;
+}) {
+  const [selected, setSelected] = useState(0);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    // setValue(newValue);
-    console.log("click value", newValue);
+  const handleChange = (_: any, newValue: number) => {
+    setSelected(newValue);
+    onSelectDay(days[newValue].day);
   };
 
   return (
     <Box sx={{ bgcolor: "background.paper", width: "910px" }}>
       <Tabs
-        value={weekName}
+        value={selected}
         onChange={handleChange}
         variant="scrollable"
         scrollButtons={false}
-        aria-label="scrollable prevent tabs example"
       >
-        {weekName?.map((name) => (
+        {days.map((name, idx) => (
           <Tab
-            key={name?.date}
-            sx={{
-              color: "gray",
-              "&.Mui-selected": {
-                backgroundColor: "#959090ff",
-                color: "black",
-                borderRadius: "8px",
-              },
-              "&.Mui-selected .MuiTabs-indicator": {
-                display: "none",
-              },
-              border: "1px solid black",
-            }}
+            key={name.date}
             label={
               <div
                 style={{
@@ -44,10 +33,19 @@ export default function TabBar() {
                   alignItems: "center",
                 }}
               >
-                <span>{name?.day}</span>
-                <span>Date: {name?.date}</span>
+                <span>{name.day}</span>
+                <span>Date: {name.date}</span>
               </div>
             }
+            sx={{
+              color: "gray",
+              "&.Mui-selected": {
+                backgroundColor: "#959090ff",
+                color: "black",
+                borderRadius: "8px",
+              },
+              border: "1px solid black",
+            }}
           />
         ))}
       </Tabs>

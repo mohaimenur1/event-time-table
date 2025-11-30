@@ -1,25 +1,26 @@
 import { Box } from "@mui/material";
-import "./App.css";
+import { useState } from "react";
 import TabBar from "./components/TabBar";
-import VenuBar from "./components/VenuBar";
 import TimeSection from "./components/TimeSection";
+import VenuBar from "./components/VenuBar";
 import EventSection from "./components/EventSection";
+import { days } from "./db";
 
-function App() {
+export function App() {
+  const [selectedDay, setSelectedDay] = useState(days[0].day);
+
   return (
-    <>
-      <Box sx={{ maxWidth: "1000px" }}>
-        <TabBar />
-        <Box sx={{ display: "flex" }}>
-          <TimeSection />
-          <Box sx={{ display: "flex", flexDirection: "column" }}>
-            <VenuBar />
-            <EventSection />
-          </Box>
+    <Box sx={{ maxWidth: "1000px" }}>
+      <TabBar onSelectDay={setSelectedDay} />
+
+      <Box sx={{ display: "flex" }}>
+        <TimeSection />
+
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+          <VenuBar />
+          <EventSection selectedDay={selectedDay} />
         </Box>
       </Box>
-    </>
+    </Box>
   );
 }
-
-export default App;

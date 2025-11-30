@@ -9,10 +9,11 @@ export default function TabBar() {
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     // setValue(newValue);
+    console.log("click value", newValue);
   };
 
   return (
-    <Box sx={{ bgcolor: "background.paper" }}>
+    <Box sx={{ bgcolor: "background.paper", width: "910px" }}>
       <Tabs
         value={weekName}
         onChange={handleChange}
@@ -23,6 +24,18 @@ export default function TabBar() {
         {weekName?.map((name) => (
           <Tab
             key={name?.date}
+            sx={{
+              color: "gray",
+              "&.Mui-selected": {
+                backgroundColor: "#959090ff",
+                color: "black",
+                borderRadius: "8px",
+              },
+              "&.Mui-selected .MuiTabs-indicator": {
+                display: "none",
+              },
+              border: "1px solid black",
+            }}
             label={
               <div
                 style={{
@@ -32,7 +45,7 @@ export default function TabBar() {
                 }}
               >
                 <span>{name?.day}</span>
-                <span>{name?.date}</span>
+                <span>Date: {name?.date}</span>
               </div>
             }
           />

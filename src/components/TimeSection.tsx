@@ -2,10 +2,10 @@ import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
-import { days, Venus } from "../db";
+import { timeTable } from "../db";
 
-export default function VenuBar() {
-  const [venueData, setVenueData] = React.useState(Venus);
+export default function TimeSection() {
+  const [times, setTimes] = React.useState(timeTable);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     // setValue(newValue);
@@ -13,15 +13,16 @@ export default function VenuBar() {
   };
 
   return (
-    <Box sx={{ bgcolor: "background.paper", height: "480px", width: "820px" }}>
+    <Box sx={{ bgcolor: "background.paper" }}>
       <Tabs
-        value={venueData}
+        value={times}
         onChange={handleChange}
         variant="scrollable"
         scrollButtons={false}
         aria-label="scrollable prevent tabs example"
+        orientation="vertical"
       >
-        {venueData?.map((name) => (
+        {times?.map((name) => (
           <Tab
             key={name}
             sx={{
@@ -35,7 +36,6 @@ export default function VenuBar() {
                 display: "none",
               },
               border: "1px solid black",
-              padding: "0 60px",
             }}
             label={
               <div

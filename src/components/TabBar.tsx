@@ -2,30 +2,41 @@ import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
+import { days } from "../db";
 
 export default function TabBar() {
-  const [value, setValue] = React.useState(0);
+  const [weekName, setWeekName] = React.useState(days);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
+    // setValue(newValue);
   };
 
   return (
     <Box sx={{ bgcolor: "background.paper" }}>
       <Tabs
-        value={value}
+        value={weekName}
         onChange={handleChange}
         variant="scrollable"
         scrollButtons={false}
         aria-label="scrollable prevent tabs example"
       >
-        <Tab label="Item One" />
-        <Tab label="Item Two" />
-        <Tab label="Item Three" />
-        <Tab label="Item Four" />
-        <Tab label="Item Five" />
-        <Tab label="Item Six" />
-        <Tab label="Item Seven" />
+        {weekName?.map((name) => (
+          <Tab
+            key={name?.date}
+            label={
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
+                <span>{name?.day}</span>
+                <span>{name?.date}</span>
+              </div>
+            }
+          />
+        ))}
       </Tabs>
     </Box>
   );

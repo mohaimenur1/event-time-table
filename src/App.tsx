@@ -12,7 +12,7 @@ function App() {
         <TabBar />
         <Box sx={{ display: "flex" }}>
           <TimeSection />
-          <Box>
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
             <VenuBar />
             <EventSection />
           </Box>
